@@ -1,0 +1,24 @@
+### Composer ###
+composer.phar
+/vendor/
+
+### PHPUnit ###
+
+# Generated files
+.phpunit.result.cache
+.phpunit.cache
+
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml
+
+# Build data
+/build/
+
+# IDEA
+/.idea/
+
+# macOS
+.DS_Store
+
+.php-cs-fixer.cache

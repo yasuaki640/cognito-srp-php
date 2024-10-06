@@ -1,0 +1,38 @@
+{
+    "name": "yasuaki640/cognito-srp-php",
+    "description": "Helper written by PHP to get through SRP authentication for Amazon Cognito.",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.0.0",
+    "autoload": {
+        "psr-4": {
+            "CognitoSrpPhp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CognitoSrpPhp\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yasuaki640",
+            "email": "yasuaki640@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "require": {
+        "php": "^8.3",
+        "aws/aws-sdk-php": "^3.323",
+        "phpseclib/phpseclib": "^3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^11.4",
+        "nesbot/carbon": "^3.8"
+    }
+}
