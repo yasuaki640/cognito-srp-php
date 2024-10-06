@@ -20,7 +20,8 @@
         }
     ],
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "php-cs-fixer": "vendor/bin/php-cs-fixer fix ."
     },
     "require": {
         "php": "^8.3",
