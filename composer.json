@@ -20,7 +20,6 @@
             "email": "yasuaki640@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
