@@ -212,7 +212,7 @@ class CognitoSrp
         string $password
     ): array {
         if ($result->get('ChallengeName') != 'PASSWORD_VERIFIER') {
-            throw new \Exception("ChallengeName `{$result->get('ChallengeName')}` is not supported.");
+            throw new \InvalidArgumentException("ChallengeName `{$result->get('ChallengeName')}` is not supported.");
         }
 
         $challengeParameters = $result->get('ChallengeParameters');
@@ -277,6 +277,7 @@ class CognitoSrp
 
     /**
      * Creates the Cognito secret hash
+     * @throws \Exception
      */
     public function cognitoSecretHash(string $username): string
     {
@@ -291,8 +292,7 @@ class CognitoSrp
     private function hashClientSecret(string $message): string
     {
         if ($this->clientSecret === null) {
-            // TODO: 専用のexceptionクラスを作る
-            throw new \Exception('If the user pool has a client secret set, you must pass the `$clientSecret` argument to the constructor');
+            throw new \InvalidArgumentException('If the user pool has a client secret set, you must pass the `$clientSecret` argument to the constructor');
         }
 
         $hash = hash_hmac(

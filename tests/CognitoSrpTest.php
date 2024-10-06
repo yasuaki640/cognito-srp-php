@@ -34,7 +34,7 @@ class CognitoSrpTest extends TestCase
 
     public function test_fail_if_cognitoSecretHash_called_without_secret_hash(): void
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('If the user pool has a client secret set, you must pass the `$clientSecret` argument to the constructor');
 
         $this->srpHelper->cognitoSecretHash('dummy-username');
@@ -57,7 +57,7 @@ class CognitoSrpTest extends TestCase
      */
     public function test_fail_processChallenge_if_unsupported_challengeName_given(): void
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('ChallengeName `SMS_MFA` is not supported.');
 
         $this->srpHelper = new CognitoSrp(

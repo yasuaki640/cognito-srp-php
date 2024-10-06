@@ -16,7 +16,7 @@
     },
     "authors": [
         {
-            "name": "yasuaki640",
+            "name": "Yasuaki Watanabe",
             "email": "yasuaki640@gmail.com"
         }
     ],
@@ -27,12 +27,12 @@
     "require": {
         "php": "^8.3",
         "aws/aws-sdk-php": "^3.323",
-        "phpseclib/phpseclib": "^3.0"
+        "phpseclib/phpseclib": "^3.0",
+        "nesbot/carbon": "^3.8"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.64",
         "phpstan/phpstan": "^1.12",
-        "phpunit/phpunit": "^11.4",
-        "nesbot/carbon": "^3.8"
+        "phpunit/phpunit": "^11.4"
     }
 }
