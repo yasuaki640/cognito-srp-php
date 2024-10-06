@@ -23,7 +23,7 @@ composer require yasuaki640/cognito-srp-php
     $result = $client->adminInitiateAuth([
         'AuthFlow' => 'USER_SRP_AUTH',
         'ClientId' => 'your client id',
-        'UserPoolId' => 'your client secret (if set)',
+        'UserPoolId' => 'your pool id',
         'AuthParameters' => [
             'USERNAME' => $username,
              // calculate A
