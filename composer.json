@@ -3,7 +3,6 @@
     "description": "Helper written by PHP to get through SRP authentication for Amazon Cognito.",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.0",
     "autoload": {
         "psr-4": {
             "CognitoSrpPhp\\": "src/"
