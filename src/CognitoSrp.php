@@ -91,7 +91,7 @@ class CognitoSrp
      *
      * @throws RandomException
      */
-    public function largeA(): BigInteger
+    private function largeA(): BigInteger
     {
         if (is_null($this->A)) {
             $this->A = $this->calculateA($this->smallA());
@@ -99,6 +99,17 @@ class CognitoSrp
 
         return $this->A;
     }
+
+    /**
+     * Get the client's A with hex format.
+     *
+     * @throws RandomException
+     */
+    public function largeAHex(): string
+    {
+        return $this->largeA()->toHex();
+    }
+
 
     /**
      * Generate random bytes as hexadecimal string.

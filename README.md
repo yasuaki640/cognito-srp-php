@@ -13,6 +13,11 @@ composer require yasuaki640/cognito-srp-php
 ## Usage
 
 ```php
+    // instantiate aws client
+    $client = new CognitoIdentityProviderClient([
+        ...
+    ]);
+
     // instantiate helper
     $srpHelper = new CognitoSrp(
         'your client id',
@@ -27,7 +32,7 @@ composer require yasuaki640/cognito-srp-php
         'AuthParameters' => [
             'USERNAME' => $username,
              // calculate A
-            'SRP_A' => $srpHelper->largeA()->toHex(),
+            'SRP_A' => $srpHelper->largeAHex(),
              // calculate secret Hash
             'SECRET_HASH' => $srpHelper->cognitoSecretHash($username),
         ],

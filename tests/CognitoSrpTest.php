@@ -26,10 +26,10 @@ class CognitoSrpTest extends TestCase
     /**
      * @throws RandomException
      */
-    public function test_calculate_largeA(): void
+    public function test_calculate_largeAHex(): void
     {
-        $largeA = $this->srpHelper->largeA();
-        $this->assertInstanceOf(BigInteger::class, $largeA);
+        $largeA = $this->srpHelper->largeAHex();
+        $this->assertIsString($largeA);
     }
 
     public function test_fail_if_cognitoSecretHash_called_without_secret_hash(): void
