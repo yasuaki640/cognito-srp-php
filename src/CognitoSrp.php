@@ -105,7 +105,7 @@ class CognitoSrp
      *
      * @throws RandomException
      */
-    public function largeAHex(): string
+    public function SRP_A(): string
     {
         return $this->largeA()->toHex();
     }
@@ -217,7 +217,7 @@ class CognitoSrp
      * @throws RandomException
      * @throws \Exception
      */
-    public function processChallenge(
+    public function ChallengeResponses(
         Result $result,
         string $username,
         string $password
@@ -246,7 +246,7 @@ class CognitoSrp
             'USERNAME' => $userId,
             'PASSWORD_CLAIM_SECRET_BLOCK' => $challengeParameters['SECRET_BLOCK'],
             'PASSWORD_CLAIM_SIGNATURE' => base64_encode($signature),
-            'SECRET_HASH' => $this->cognitoSecretHash($username),
+            'SECRET_HASH' => $this->SECRET_HASH($username),
         ];
     }
 
@@ -290,7 +290,7 @@ class CognitoSrp
      * Creates the Cognito secret hash
      * @throws \Exception
      */
-    public function cognitoSecretHash(string $username): string
+    public function SECRET_HASH(string $username): string
     {
         return $this->hashClientSecret($username . $this->clientId);
     }

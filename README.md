@@ -32,9 +32,9 @@ composer require yasuaki640/cognito-srp-php
         'AuthParameters' => [
             'USERNAME' => $username,
              // calculate A
-            'SRP_A' => $srpHelper->largeAHex(),
+            'SRP_A' => $srpHelper->SRP_A(),
              // calculate secret Hash
-            'SECRET_HASH' => $srpHelper->cognitoSecretHash($username),
+            'SECRET_HASH' => $srpHelper->SECRET_HASH($username),
         ],
     ]);
 
@@ -43,6 +43,6 @@ composer require yasuaki640/cognito-srp-php
         'UserPoolId' => 'your pool id',
         'ClientId' => 'your client id',
         // generate authentication challenge response params
-        'ChallengeResponses' => $srpHelper->processChallenge($result, $username, $password), 
+        'ChallengeResponses' => $srpHelper->ChallengeResponses($result, $username, $password), 
     ]);
 ```

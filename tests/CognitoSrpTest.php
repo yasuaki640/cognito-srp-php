@@ -7,7 +7,6 @@ namespace CognitoSrpPhp\Tests;
 use Aws\Result;
 use Carbon\Carbon;
 use CognitoSrpPhp\CognitoSrp;
-use phpseclib3\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
 use Random\RandomException;
 
@@ -26,21 +25,21 @@ class CognitoSrpTest extends TestCase
     /**
      * @throws RandomException
      */
-    public function test_calculate_largeAHex(): void
+    public function test_calculate_SRP_A(): void
     {
-        $largeA = $this->srpHelper->largeAHex();
+        $largeA = $this->srpHelper->SRP_A();
         $this->assertIsString($largeA);
     }
 
-    public function test_fail_if_cognitoSecretHash_called_without_secret_hash(): void
+    public function test_fail_if_SECRER_HASH_called_without_secret_hash(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('If the user pool has a client secret set, you must pass the `$clientSecret` argument to the constructor');
 
-        $this->srpHelper->cognitoSecretHash('dummy-username');
+        $this->srpHelper->SECRET_HASH('dummy-username');
     }
 
-    public function test_cognitoSecretHash_returns_hash_string(): void
+    public function test_SECRET_HASH_returns_hash_string(): void
     {
         $this->srpHelper = new CognitoSrp(
             'dummy-client-id',
@@ -48,14 +47,14 @@ class CognitoSrpTest extends TestCase
             'dummy-client-secret'
         );
 
-        $hash = $this->srpHelper->cognitoSecretHash('dummy-username');
+        $hash = $this->srpHelper->SECRET_HASH('dummy-username');
         $this->assertSame($hash, 'YkR2p+39v97xkgQcaTJGOZYbowLDT1KQOkJr6YNUI3E=');
     }
 
     /**
      * @throws RandomException
      */
-    public function test_fail_processChallenge_if_unsupported_challengeName_given(): void
+    public function test_fail_ChallengeResponses_if_unsupported_challengeName_given(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('ChallengeName `SMS_MFA` is not supported.');
@@ -67,13 +66,13 @@ class CognitoSrpTest extends TestCase
         );
         $mockResult = new Result(['ChallengeName' => 'SMS_MFA']);
 
-        $this->srpHelper->processChallenge($mockResult, 'username', 'password');
+        $this->srpHelper->ChallengeResponses($mockResult, 'username', 'password');
     }
 
     /**
      * @throws RandomException
      */
-    public function test_processChallenge(): void
+    public function test_ChallengeResponses(): void
     {
         $mockNow = Carbon::create(2024, 10, 2)->setTimezone('UTC');
         Carbon::setTestNow($mockNow);
@@ -94,7 +93,7 @@ class CognitoSrpTest extends TestCase
             ],
         ]);
 
-        $challenge = $this->srpHelper->processChallenge($mockResult, 'username', 'password');
+        $challenge = $this->srpHelper->ChallengeResponses($mockResult, 'username', 'password');
 
         $this->assertSame('Wed Oct 2 00:00:00 UTC 2024', $challenge['TIMESTAMP']);
         $this->assertSame('dummy-username', $challenge['USERNAME']);
