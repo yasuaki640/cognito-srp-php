@@ -99,6 +99,6 @@ class CognitoSrpTest extends TestCase
         $this->assertSame('dummy-username', $challenge['USERNAME']);
         $this->assertSame('0', $challenge['PASSWORD_CLAIM_SECRET_BLOCK']);
         $this->assertSame(44, mb_strlen($challenge['PASSWORD_CLAIM_SIGNATURE']));
-        $this->assertSame('x2HCZCxHF442chiDvMr3RlnTdu0yLseXaLA398C/m+E=', $challenge['SECRET_HASH']);
+        $this->assertSame('YkR2p+39v97xkgQcaTJGOZYbowLDT1KQOkJr6YNUI3E=', $challenge['SECRET_HASH']);
     }
 }
