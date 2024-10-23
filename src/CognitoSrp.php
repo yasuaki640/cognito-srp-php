@@ -219,7 +219,6 @@ class CognitoSrp
      */
     public function ChallengeResponses(
         Result $result,
-        string $username,
         string $password
     ): array {
         if ($result->get('ChallengeName') != 'PASSWORD_VERIFIER') {
@@ -246,7 +245,7 @@ class CognitoSrp
             'USERNAME' => $userId,
             'PASSWORD_CLAIM_SECRET_BLOCK' => $challengeParameters['SECRET_BLOCK'],
             'PASSWORD_CLAIM_SIGNATURE' => base64_encode($signature),
-            'SECRET_HASH' => $this->SECRET_HASH($username),
+            'SECRET_HASH' => $this->SECRET_HASH($userId),
         ];
     }
 
