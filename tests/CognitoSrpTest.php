@@ -93,7 +93,7 @@ class CognitoSrpTest extends TestCase
             ],
         ]);
 
-        $challenge = $this->srpHelper->ChallengeResponses($mockResult, 'username', 'password');
+        $challenge = $this->srpHelper->ChallengeResponses($mockResult, 'password');
 
         $this->assertSame('Wed Oct 2 00:00:00 UTC 2024', $challenge['TIMESTAMP']);
         $this->assertSame('dummy-username', $challenge['USERNAME']);

@@ -43,6 +43,6 @@ composer require yasuaki640/cognito-srp-php
         'UserPoolId' => 'your pool id',
         'ClientId' => 'your client id',
         // generate authentication challenge response params
-        'ChallengeResponses' => $srpHelper->ChallengeResponses($result, $username, $password), 
+        'ChallengeResponses' => $srpHelper->ChallengeResponses($result, $password), 
     ]);
 ```

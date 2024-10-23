@@ -219,7 +219,6 @@ class CognitoSrp
      */
     public function ChallengeResponses(
         Result $result,
-        string $username,
         string $password
     ): array {
         if ($result->get('ChallengeName') != 'PASSWORD_VERIFIER') {
