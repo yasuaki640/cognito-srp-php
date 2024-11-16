@@ -46,7 +46,7 @@ class CognitoSrp
 
     private string $clientId;
 
-    private ?string $clientSecret;
+    private string $clientSecret;
 
     protected string $poolId;
 
@@ -58,7 +58,7 @@ class CognitoSrp
     public function __construct(
         string  $clientId,
         string  $poolId,
-        ?string $clientSecret = null
+        string $clientSecret
     ) {
         $this->N = new BigInteger(static::N_HEX, 16);
         $this->g = new BigInteger(static::G_HEX, 16);
@@ -301,10 +301,6 @@ class CognitoSrp
      */
     private function hashClientSecret(string $message): string
     {
-        if ($this->clientSecret === null) {
-            throw new \InvalidArgumentException('If the user pool has a client secret set, you must pass the `$clientSecret` argument to the constructor');
-        }
-
         $hash = hash_hmac(
             'sha256',
             $message,

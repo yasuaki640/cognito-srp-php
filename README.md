@@ -22,7 +22,7 @@ composer require yasuaki640/cognito-srp-php
     $srpHelper = new CognitoSrp(
         'your client id',
         'your pool id',
-        'your client secret (if set)',
+        'your client secret (required)',
     );
     
     $result = $client->adminInitiateAuth([

@@ -18,7 +18,8 @@ class CognitoSrpTest extends TestCase
     {
         $this->srpHelper = new CognitoSrp(
             'dummy-client-id',
-            'dummy-pool-id'
+            'dummy-pool-id',
+            'dummy-client-secret'
         );
     }
 
@@ -29,14 +30,6 @@ class CognitoSrpTest extends TestCase
     {
         $largeA = $this->srpHelper->SRP_A();
         $this->assertIsString($largeA);
-    }
-
-    public function test_fail_if_SECRER_HASH_called_without_secret_hash(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('If the user pool has a client secret set, you must pass the `$clientSecret` argument to the constructor');
-
-        $this->srpHelper->SECRET_HASH('dummy-username');
     }
 
     public function test_SECRET_HASH_returns_hash_string(): void
